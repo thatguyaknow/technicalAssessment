@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TechnicalAssessment
+namespace technicalAssessment
 {
-
     /// <summary>
     /// Contains information on one lap from a session
     /// </summary>
     public class LapDataRow
     {
         /// <summary>
-        /// Car number 
+        /// Car number
         /// </summary>
         public int CarNumber { get; set; }
 
