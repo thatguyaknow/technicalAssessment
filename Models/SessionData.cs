@@ -8,5 +8,8 @@ namespace technicalAssessment.Models
 {
     class SessionData
     {
+        List<LapDataRow> Laps { get; set; }
+
+
     }
 }

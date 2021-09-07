@@ -8,6 +8,40 @@ namespace technicalAssessment
     public class LapDataRow
     {
         /// <summary>
+        /// Empty constructor
+        /// </summary>
+        LapDataRow()
+        {
+
+        }
+
+        /// <summary>
+        /// Constructor with options for all properties and null checks
+        /// </summary>
+        /// <param name="carNumber"></param>
+        /// <param name="lastName"></param>
+        /// <param name="shortName"></param>
+        /// <param name="time"></param>
+        /// <param name="entryTime"></param>
+        /// <param name="exitTime"></param>
+        /// <param name="lap"></param>
+        /// <param name="flag"></param>
+        /// <param name="entryTOD"></param>
+        public LapDataRow(int carNumber, string lastName, string shortName, double time, double entryTime, double exitTime, int lap, string flag, DateTime entryTOD)
+        {
+            CarNumber = carNumber;
+            LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
+            ShortName = shortName ?? throw new ArgumentNullException(nameof(shortName));
+            Time = time;
+            EntryTime = entryTime;
+            ExitTime = exitTime;
+            Lap = lap;
+            Flag = flag ?? throw new ArgumentNullException(nameof(flag));
+            EntryTOD = entryTOD;
+        }
+
+
+        /// <summary>
         /// Car number
         /// </summary>
         public int CarNumber { get; set; }
