@@ -4,7 +4,7 @@ using System.Linq;
 namespace technicalAssessment.Models
 {
     /// <summary>
-    /// Session data for a car number / given driver 
+    /// Session data for a car number / given driver
     /// </summary>
     internal class SessionData
     {
@@ -37,15 +37,22 @@ namespace technicalAssessment.Models
         /// Car number
         /// </summary>
         public int CarNumber => Laps.First().CarNumber;
-        
+
         /// <summary>
         /// Last name of the driver
         /// </summary>
         public string DriverName => Laps.First().LastName;
 
         /// <summary>
-        /// Rank of the car number / driver in the session based on lap time 
+        /// Rank of the car number / driver in the session based on lap time
         /// </summary>
         public int Rank { get; set; }
+
+        private static double[] TeamCarNumbers = new double[] { 2, 3, 12, 22 };
+
+        /// <summary>
+        /// Is the car a Team Penske car
+        /// </summary>
+        public bool IsTeamCar => TeamCarNumbers.Contains(CarNumber);
     }
 }
