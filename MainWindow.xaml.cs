@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace technicalAssessment
+namespace TechnicalAssessment
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
