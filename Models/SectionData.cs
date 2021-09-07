@@ -3,14 +3,14 @@
 namespace technicalAssessment
 {
     /// <summary>
-    /// Contains information on one lap from a session
+    /// Contains information on one section or lap from a session
     /// </summary>
-    public class LapDataRow
+    public class SectionData
     {
         /// <summary>
         /// Empty constructor
         /// </summary>
-        LapDataRow()
+        public SectionData()
         {
 
         }
@@ -27,7 +27,7 @@ namespace technicalAssessment
         /// <param name="lap"></param>
         /// <param name="flag"></param>
         /// <param name="entryTOD"></param>
-        public LapDataRow(int carNumber, string lastName, string shortName, double time, double entryTime, double exitTime, int lap, string flag, DateTime entryTOD)
+        public SectionData(int carNumber, string lastName, string shortName, double time, double entryTime, double exitTime, int lap, Flag flag, DateTime entryTOD)
         {
             CarNumber = carNumber;
             LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
@@ -36,7 +36,7 @@ namespace technicalAssessment
             EntryTime = entryTime;
             ExitTime = exitTime;
             Lap = lap;
-            Flag = flag ?? throw new ArgumentNullException(nameof(flag));
+            Flag = flag;
             EntryTOD = entryTOD;
         }
 
@@ -71,6 +71,7 @@ namespace technicalAssessment
         /// </summary>
         public double ExitTime { get; set; }
 
+
         /// <summary>
         /// Lap number of the section
         /// </summary>
@@ -79,11 +80,24 @@ namespace technicalAssessment
         /// <summary>
         /// Flag when the car entered the section
         /// </summary>
-        public string Flag { get; set; }
+        public Flag Flag { get; set; }
 
         /// <summary>
         /// Time of Day when car entered the section
         /// </summary>
         public DateTime EntryTOD { get; set; }
+    }
+
+    /// <summary>
+    /// Enum for the flag the section was recorded under
+    /// </summary>
+    public enum Flag
+    {
+        Green,
+        Yellow,
+        Red,
+        Black,
+        Checker,
+        GreenWhiteChecker
     }
 }
