@@ -52,5 +52,6 @@ namespace SessionViewer.Models
         {
             Sections = sections;
         }
+
     }
 }
