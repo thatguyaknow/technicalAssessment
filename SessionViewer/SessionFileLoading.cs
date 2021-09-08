@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace technicalAssessment
+namespace SessionViewer
 {
     public static class SessionFileLoading
     {
@@ -51,7 +51,7 @@ namespace technicalAssessment
             ///First convert each line to Section Data
             foreach (var line in rawLines)
             {
-                SectionData? parsedLine = ParseRawLine(line);
+                SectionData parsedLine = ParseRawLine(line);
                 if (parsedLine != null) sectionDataList.Add(parsedLine);
             }
 
