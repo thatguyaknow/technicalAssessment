@@ -16,6 +16,7 @@ namespace SessionViewer.Tests
 
         [Theory]
         [InlineData ("\\Chevrolet Detroit Grand Prix_Practice 2.csv")]
+        [InlineData ("\\Chevrolet Detroit Grand Prix_Practice 2_BAD.csv")]
         public async void FileLoadTest(string fileName)
         {
             var fullPath = basePath + fileName;

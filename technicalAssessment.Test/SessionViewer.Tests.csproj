@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
@@ -22,6 +22,9 @@
 
   <ItemGroup>
     <None Update="ExampleFiles\Chevrolet Detroit Grand Prix_Practice 2.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ExampleFiles\Chevrolet Detroit Grand Prix_Practice 2_BAD.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
