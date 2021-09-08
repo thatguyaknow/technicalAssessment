@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace SessionViewer.Models
@@ -49,9 +50,17 @@ namespace SessionViewer.Models
         public int Rank { get; set; }
 
         private static double[] TeamCarNumbers = new double[] { 2, 3, 12, 22 };
+
+
         /// <summary>
         /// Is the car a Team Penske car
         /// </summary>
         public bool IsTeamCar => TeamCarNumbers.Contains(CarNumber);
+
+        public SessionData()
+        {
+            Laps = new List<LapData>();
+        }
+
     }
 }
