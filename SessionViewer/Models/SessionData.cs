@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace technicalAssessment.Models
+namespace SessionViewer.Models
 {
     /// <summary>
     /// Session data for a car number / given driver
@@ -11,7 +11,7 @@ namespace technicalAssessment.Models
         /// <summary>
         /// Lap objects
         /// </summary>
-        private List<LapData> Laps { get; set; }
+        public List<LapData> Laps { get; set; }
 
         /// <summary>
         /// Time of the last lap

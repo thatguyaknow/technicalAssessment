@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace technicalAssessment.Models
+namespace SessionViewer.Models
 {
     /// <summary>
     /// Data for a given lap and it's sections

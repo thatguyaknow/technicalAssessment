@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace technicalAssessment
+namespace SessionViewer.Models
 {
     /// <summary>
     /// Contains information on one section or lap from a session
