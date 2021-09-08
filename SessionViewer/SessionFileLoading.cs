@@ -110,6 +110,9 @@ namespace technicalAssessment
             {
                 //Split the line
                 var lineSplit = line.Split(',');
+                //No need to go further if not the currect number of columns
+                if (lineSplit.Count() != 9) return null;
+
 
                 List<bool> parseResults = new List<bool>();
 
@@ -122,16 +125,22 @@ namespace technicalAssessment
                 parseResults.Add(double.TryParse(lineSplit[4], out double entryTime));
                 parseResults.Add(double.TryParse(lineSplit[5], out double exitTime));
                 parseResults.Add(int.TryParse(lineSplit[6], out int lapNum));
+                if (lapNum < 0) parseResults.Add(false);
+
                 parseResults.Add(ParseFlag(lineSplit[7], out Flag flag));
 
                 var entryTODSplit = lineSplit[8].Split(':');
 
                 //Must have Hour:Minute:Second.Millisecond
-                if (entryTODSplit.Count() != 3) return null;
+                if (entryTODSplit.Count() != 3) parseResults.Add(false);
+
                 parseResults.Add(int.TryParse(entryTODSplit[0], out int hour));
                 parseResults.Add(int.TryParse(entryTODSplit[1], out int minute));
 
                 var entryTODSecondSplit = entryTODSplit[2].Split('.');
+
+                //Must have Second.Millisecond
+                if (entryTODSecondSplit.Count() != 2) parseResults.Add(false);
 
                 parseResults.Add(int.TryParse(entryTODSecondSplit[0], out int second));
                 parseResults.Add(int.TryParse(entryTODSecondSplit[1].Substring(0, 3), out int millisecond)); //substring of the first 3 digits as DateTime takes only up to milliseconds
