@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace technicalAssessment.Models
+namespace SessionViewer.Models
 {
     /// <summary>
     /// Session data for a car number / given driver
     /// </summary>
-    internal class SessionData
+    public class SessionData
     {
         /// <summary>
         /// Lap objects
         /// </summary>
-        private List<LapData> Laps { get; set; }
+        public List<LapData> Laps { get; set; }
 
         /// <summary>
         /// Time of the last lap
@@ -49,7 +49,6 @@ namespace technicalAssessment.Models
         public int Rank { get; set; }
 
         private static double[] TeamCarNumbers = new double[] { 2, 3, 12, 22 };
-
         /// <summary>
         /// Is the car a Team Penske car
         /// </summary>
