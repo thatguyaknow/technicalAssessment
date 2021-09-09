@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SessionViewer"
         mc:Ignorable="d"
-        Title="{Binding EventName}" Height="450" Width="800">
+        Title="{Binding EventName}" Height="1080" Width="1920">
     <Window.Resources>
         <Style x:Key="TeamCar" TargetType="DataGridCell">
             <Setter Property="FontSize" Value="18"/>

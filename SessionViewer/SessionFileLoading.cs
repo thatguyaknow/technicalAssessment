@@ -32,7 +32,11 @@ namespace SessionViewer
                 MessageBox.Show($"Exception when reading {fileName}. \nException: {e.Message}\nStackTrace: {e.StackTrace}");
             }
 
-            return ParseRawLines(rawLines);
+            var sessionData = ParseRawLines(rawLines);
+
+            RankSessionData(ref sessionData);
+
+            return sessionData;
         }
 
         /// <summary>
@@ -200,6 +204,21 @@ namespace SessionViewer
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Order the session data in the list and appropriately set their rank property
+        /// </summary>
+        /// <param name="sessionData"></param>
+        private static void RankSessionData(ref List<SessionData> sessionDataList)
+        {
+            sessionDataList = sessionDataList.OrderBy(o => o.FastLapTime).ToList();
+
+            for (int i = 0; i < sessionDataList.Count; i++)
+            {
+                sessionDataList[i].Rank = i + 1;
+            }
+
         }
     }
 }
