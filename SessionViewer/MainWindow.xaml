@@ -35,7 +35,7 @@
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <Button Command="{Binding LoadSession}" Content="Load Session" Width="80" Height="25" HorizontalAlignment="Left" Margin="4" />
-            <Label Content="{Binding SessionName}" Width="80" Height="25" HorizontalAlignment="Left" Margin="4" />
+            <Label Content="{Binding SessionName, Mode=OneWay}"  Width="80" Height="25" HorizontalAlignment="Left" Margin="4" />
         </StackPanel>
         <ScrollViewer>
             <DataGrid x:Name="LapDataGrid" ItemsSource="{Binding Path=SessionData}" AutoGenerateColumns="False" Margin="3,0,3,0">

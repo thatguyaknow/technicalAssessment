@@ -15,7 +15,15 @@ namespace SessionViewer
 
         }
 
-        public string EventName => _sessionData?.First().EventName;
+        private string _eventName = "SessionViewer";
+
+        public string EventName { get => _eventName; set {
+                _eventName = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        //public string EventName => _sessionData?.First().EventName;
         public string SessionName => _sessionData?.First().SessionName;
 
         private ObservableCollection<SessionData> _sessionData;
@@ -27,7 +35,7 @@ namespace SessionViewer
             {
                 _sessionData = value;
                 RaisePropertyChanged();
-                RaisePropertyChanged(EventName);
+                //RaisePropertyChanged(EventName);
                 RaisePropertyChanged(SessionName);
             }
         }
