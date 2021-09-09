@@ -12,31 +12,41 @@ namespace SessionViewer
     {
         public MainWindowViewModel()
         {
-
         }
 
-        private string _eventName = "SessionViewer";
+        private string _eventName = "Session Viewer";
 
-        public string EventName { get => _eventName; set {
-                _eventName = value;
+        public string EventName
+        {
+            get => _eventName; set
+            {
+                _eventName = $"Session Viewer {value}";
                 RaisePropertyChanged();
             }
         }
 
-        //public string EventName => _sessionData?.First().EventName;
-        public string SessionName => _sessionData?.First().SessionName;
+        private string _sessionName = "";
+
+        public string SessionName
+        {
+            get => _sessionName; set
+            {
+                _sessionName = value;
+                RaisePropertyChanged();
+            }
+        }
 
         private ObservableCollection<SessionData> _sessionData;
 
         public ObservableCollection<SessionData> SessionData
         {
-            get => _sessionData; 
+            get => _sessionData;
             set
             {
                 _sessionData = value;
                 RaisePropertyChanged();
-                //RaisePropertyChanged(EventName);
-                RaisePropertyChanged(SessionName);
+                EventName = SessionData.First().EventName;
+                SessionName = SessionData.First().SessionName;
             }
         }
 
@@ -56,16 +66,10 @@ namespace SessionViewer
 
                     if (openFileDialog.ShowDialog() == true)
                     {
-                        var SessionDataList = await SessionFileLoading.LoadSessionCSV(openFileDialog.FileName);
-
-                        SessionDataList = SessionDataList.OrderBy(o => o.FastLapTime).ToList();
-
-                        SessionData = new ObservableCollection<SessionData>(SessionDataList);
+                        SessionData = new ObservableCollection<SessionData>(await SessionFileLoading.LoadSessionCSV(openFileDialog.FileName));
                     }
                 });
             }
         }
-
-
     }
 }

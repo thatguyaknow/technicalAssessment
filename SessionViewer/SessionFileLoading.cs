@@ -37,9 +37,9 @@ namespace SessionViewer
             string eventName = fileName;
             string sessionName = "";
             //If it has an underscore (the name is formated properly) it will be EventName_SessioName
-            if (Path.GetFileName(fileName).Contains("_"))
+            if (Path.GetFileNameWithoutExtension(fileName).Contains("_"))
             {
-                string[] splitFileName = fileName.Split('_');
+                string[] splitFileName = Path.GetFileNameWithoutExtension(fileName).Split('_');
                 eventName = splitFileName[0];
                 sessionName = splitFileName[1];
             }
@@ -53,6 +53,8 @@ namespace SessionViewer
                 sessionData.EventName = eventName;
                 sessionData.SessionName = sessionName;
             }
+
+            RankSessionData(ref sessionDataList);
 
             return sessionDataList;
         }
@@ -222,6 +224,21 @@ namespace SessionViewer
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Order the session data in the list and appropriately set their rank property
+        /// </summary>
+        /// <param name="sessionData"></param>
+        private static void RankSessionData(ref List<SessionData> sessionDataList)
+        {
+            sessionDataList = sessionDataList.OrderBy(o => o.FastLapTime).ToList();
+
+            for (int i = 0; i < sessionDataList.Count; i++)
+            {
+                sessionDataList[i].Rank = i + 1;
+            }
+
         }
     }
 }
