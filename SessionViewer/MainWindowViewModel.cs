@@ -47,11 +47,8 @@ namespace SessionViewer
 
                     if (openFileDialog.ShowDialog() == true)
                     {
-                        var SessionDataList = await SessionFileLoading.LoadSessionCSV(openFileDialog.FileName);
-
-                        SessionDataList = SessionDataList.OrderBy(o => o.FastLapTime).ToList();
-
-                        SessionData = new ObservableCollection<SessionData>(SessionDataList);
+                        
+                        SessionData = new ObservableCollection<SessionData>(await SessionFileLoading.LoadSessionCSV(openFileDialog.FileName));
                     }
                 });
             }
