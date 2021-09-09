@@ -12,22 +12,41 @@ namespace SessionViewer
     {
         public MainWindowViewModel()
         {
-            EventName = "SessionViewer";
-            SessionName = "";
         }
 
-        public string EventName { get; set; }
-        public string SessionName { get; set; }
+        private string _eventName = "Session Viewer";
+
+        public string EventName
+        {
+            get => _eventName; set
+            {
+                _eventName = $"Session Viewer {value}";
+                RaisePropertyChanged();
+            }
+        }
+
+        private string _sessionName = "";
+
+        public string SessionName
+        {
+            get => _sessionName; set
+            {
+                _sessionName = value;
+                RaisePropertyChanged();
+            }
+        }
 
         private ObservableCollection<SessionData> _sessionData;
 
         public ObservableCollection<SessionData> SessionData
         {
-            get => _sessionData; 
+            get => _sessionData;
             set
             {
                 _sessionData = value;
                 RaisePropertyChanged();
+                EventName = SessionData.First().EventName;
+                SessionName = SessionData.First().SessionName;
             }
         }
 
@@ -47,13 +66,10 @@ namespace SessionViewer
 
                     if (openFileDialog.ShowDialog() == true)
                     {
-                        
                         SessionData = new ObservableCollection<SessionData>(await SessionFileLoading.LoadSessionCSV(openFileDialog.FileName));
                     }
                 });
             }
         }
-
-
     }
 }
