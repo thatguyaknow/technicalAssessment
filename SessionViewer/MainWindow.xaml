@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SessionViewer"
         mc:Ignorable="d"
-        Title="{Binding EventName}" Height="1080" Width="1920">
+        Title="{Binding EventName}" Height="800" Width="1720"  WindowState="Maximized">
     <Window.Resources>
         <Style x:Key="TeamCar" TargetType="DataGridCell">
             <Setter Property="FontSize" Value="18"/>
@@ -35,7 +35,7 @@
     <StackPanel>
         <StackPanel Orientation="Horizontal">
             <Button Command="{Binding LoadSession}" Content="Load Session" Width="80" Height="25" HorizontalAlignment="Left" Margin="4" />
-            <Label Content="{Binding SessionName}" Width="80" Height="25" HorizontalAlignment="Left" Margin="4" />
+            <Label Content="{Binding SessionName}"  Width="Auto " Height="25" HorizontalAlignment="Left" Margin="4" />
         </StackPanel>
         <ScrollViewer>
             <DataGrid x:Name="LapDataGrid" ItemsSource="{Binding Path=SessionData}" AutoGenerateColumns="False" Margin="3,0,3,0">
