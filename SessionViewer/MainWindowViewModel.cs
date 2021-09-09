@@ -12,12 +12,11 @@ namespace SessionViewer
     {
         public MainWindowViewModel()
         {
-            EventName = "SessionViewer";
-            SessionName = "";
+
         }
 
-        public string EventName { get; set; }
-        public string SessionName { get; set; }
+        public string EventName => _sessionData?.First().EventName;
+        public string SessionName => _sessionData?.First().SessionName;
 
         private ObservableCollection<SessionData> _sessionData;
 
@@ -28,6 +27,8 @@ namespace SessionViewer
             {
                 _sessionData = value;
                 RaisePropertyChanged();
+                RaisePropertyChanged(EventName);
+                RaisePropertyChanged(SessionName);
             }
         }
 
