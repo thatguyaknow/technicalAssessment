@@ -7,7 +7,7 @@ namespace SessionViewer.Models
     /// <summary>
     /// Session data for a car number / given driver
     /// </summary>
-    public class SessionData
+    public class SessionData 
     {
         /// <summary>
         /// Lap objects
