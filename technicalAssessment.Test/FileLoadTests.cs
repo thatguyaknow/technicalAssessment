@@ -1,7 +1,6 @@
 using SessionViewer.Models;
 using System.IO;
 using System.Linq;
-using technicalAssessment;
 using Xunit;
 
 namespace SessionViewer.Tests

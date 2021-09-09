@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace technicalAssessment
+namespace SessionViewer
 {
     public static class SessionFileLoading
     {
@@ -32,7 +32,11 @@ namespace technicalAssessment
                 MessageBox.Show($"Exception when reading {fileName}. \nException: {e.Message}\nStackTrace: {e.StackTrace}");
             }
 
-            return ParseRawLines(rawLines);
+            var sessionData = ParseRawLines(rawLines);
+
+            RankSessionData(ref sessionData);
+
+            return sessionData;
         }
 
         /// <summary>
@@ -51,7 +55,7 @@ namespace technicalAssessment
             ///First convert each line to Section Data
             foreach (var line in rawLines)
             {
-                SectionData? parsedLine = ParseRawLine(line);
+                SectionData parsedLine = ParseRawLine(line);
                 if (parsedLine != null) sectionDataList.Add(parsedLine);
             }
 
@@ -200,6 +204,21 @@ namespace technicalAssessment
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Order the session data in the list and appropriately set their rank property
+        /// </summary>
+        /// <param name="sessionData"></param>
+        private static void RankSessionData(ref List<SessionData> sessionDataList)
+        {
+            sessionDataList = sessionDataList.OrderBy(o => o.FastLapTime).ToList();
+
+            for (int i = 0; i < sessionDataList.Count; i++)
+            {
+                sessionDataList[i].Rank = i + 1;
+            }
+
         }
     }
 }
