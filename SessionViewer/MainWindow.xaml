@@ -40,13 +40,13 @@
         <ScrollViewer>
             <DataGrid x:Name="LapDataGrid" ItemsSource="{Binding Path=SessionData}" AutoGenerateColumns="False" Margin="3,0,3,0">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Rank" Binding="{Binding Rank}" />
-                    <DataGridTextColumn Header="Car" Binding="{Binding CarNumber}" CellStyle="{StaticResource TeamCar}"/>
-                    <DataGridTextColumn Header="Driver Name" Binding="{Binding DriverName}"/>
-                    <DataGridTextColumn Header="Fast Lap Time" Binding="{Binding FastLapTime}"/>
-                    <DataGridTextColumn Header="Last Lap Time" Binding="{Binding LastLapTime}"/>
-                    <DataGridTextColumn Header="Fast Lap Number" Binding="{Binding FastLapNum}"/>
-                    <DataGridTextColumn Header="Total Laps" Binding="{Binding TotalLaps}"/>
+                    <DataGridTextColumn Header="Rank" Binding="{Binding Rank, Mode=OneWay}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Car" Binding="{Binding CarNumber, Mode=OneWay}" IsReadOnly="True" CellStyle="{StaticResource TeamCar}"/>
+                    <DataGridTextColumn Header="Driver Name" Binding="{Binding DriverName, Mode=OneWay}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Fast Lap Time" Binding="{Binding FastLapTime, Mode=OneWay}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Last Lap Time" Binding="{Binding LastLapTime, Mode=OneWay}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Fast Lap Number" Binding="{Binding FastLapNum, Mode=OneWay}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Total Laps" Binding="{Binding TotalLaps, Mode=OneWay}" IsReadOnly="True"/>
                 </DataGrid.Columns>
             </DataGrid>
         </ScrollViewer>
