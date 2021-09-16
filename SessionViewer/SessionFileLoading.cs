@@ -26,17 +26,37 @@ namespace SessionViewer
                         rawLines.Add(line);
                     }
                 }
+
+
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Exception when reading {fileName}. \nException: {e.Message}\nStackTrace: {e.StackTrace}");
             }
 
-            var sessionData = ParseRawLines(rawLines);
+            string eventName = fileName;
+            string sessionName = "";
+            //If it has an underscore (the name is formated properly) it will be EventName_SessioName
+            if (Path.GetFileNameWithoutExtension(fileName).Contains("_"))
+            {
+                string[] splitFileName = Path.GetFileNameWithoutExtension(fileName).Split('_');
+                eventName = splitFileName[0];
+                sessionName = splitFileName[1];
+            }
+            //If not we can use the entire name as file name
+            
 
-            RankSessionData(ref sessionData);
+            var sessionDataList = ParseRawLines(rawLines);
 
-            return sessionData;
+            foreach(var sessionData in sessionDataList)
+            {
+                sessionData.EventName = eventName;
+                sessionData.SessionName = sessionName;
+            }
+
+            RankSessionData(ref sessionDataList);
+
+            return sessionDataList;
         }
 
         /// <summary>

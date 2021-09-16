@@ -49,13 +49,15 @@ namespace SessionViewer.Models
         /// </summary>
         public int Rank { get; set; }
 
-        private static double[] TeamCarNumbers = new double[] { 2, 3, 12, 22 };
-
+        /// <summary>
+        /// Name of the event
+        /// </summary>
+        public string EventName { get; set; }
 
         /// <summary>
-        /// Is the car a Team Penske car
+        /// Session name
         /// </summary>
-        public bool IsTeamCar => TeamCarNumbers.Contains(CarNumber);
+        public string SessionName { get; set; }
 
         public SessionData()
         {
